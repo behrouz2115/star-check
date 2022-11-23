@@ -11,5 +11,7 @@ function addList(e){
 
     const newList = document.createElement('li');
     newList.innerText = todoInput.value;
-    console.log(newList)
+    newList.classList.add('todo-item');
+    list.appendChild(newList);
+    todoInput.value='';
 }
