@@ -12,9 +12,11 @@ function addList(e){
 
     const newList = document.createElement('li');
     newList.innerText = todoInput.value;
+    save(todoInput.value)
     newList.classList.add('todo-item');
     list.appendChild(newList);
-    todoInput.value='';  
+    todoInput.value='';
+
     
     const completedBtn = document.createElement('button');
     completedBtn.innerHTML = '<i class= "fas fa-check"></i>';
@@ -26,5 +28,15 @@ function addList(e){
     trashBtn.classList.add('trash-btn');
     list.appendChild(trashBtn);
 
-    checkLilst.appendChild(list);
+    checkLilst.appendChild(list)
+}
+function save (todo){
+    let todos;
+    if (localStorage.getItem('todos')===null){
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem("todos"));
+    }
+    todos.push(todo);
+    localStorage.setItem(todos, JSON.stringify(todos))
 }
