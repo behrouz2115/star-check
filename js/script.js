@@ -12,9 +12,11 @@ function addList(e){
 
     const newList = document.createElement('li');
     newList.innerText = todoInput.value;
+    save(todoInput.value)
     newList.classList.add('todo-item');
     list.appendChild(newList);
-    todoInput.value='';  
+    todoInput.value='';
+
     
     const completedBtn = document.createElement('button');
     completedBtn.innerHTML = '<i class= "fas fa-check"></i>';
