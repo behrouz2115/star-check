@@ -26,5 +26,15 @@ function addList(e){
     trashBtn.classList.add('trash-btn');
     list.appendChild(trashBtn);
 
-    checkLilst.appendChild(list);
+    checkLilst.appendChild(list)
+}
+function save (todo){
+    let todos;
+    if (localStorage.getItem('todos')===null){
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem("todos"));
+    }
+    todos.push(todo);
+    localStorage.setItem(todos, JSON.stringify(todos))
 }
