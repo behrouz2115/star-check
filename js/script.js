@@ -1,10 +1,13 @@
 const todoInput = document.querySelector('.todo-input');
 const todoBtm = document.querySelector('.todo-button');
-const checkLilst = document.querySelector('.todo-list')
+const checkLilst = document.querySelector('.todo-list');
+const filterBtn = document.querySelector('.filter-todo');
+
 
 
 todoBtm.addEventListener('click',addList);
 checkLilst.addEventListener('click',deleteComplete);
+filterBtn.addEventListener('click',filter);
 
 
 function addList(e){
@@ -45,6 +48,30 @@ function deleteComplete(e){
     }
 
 }
+function filter(e) {
+    const todos = checkLilst.childNodes;
+    todos.forEach(function(todo){
+        switch(e.target.value){
+            case "all":
+                todo.style.display = 'flex';
+                break;
+            case 'checked':
+                if(todo.classList.contains('completed')){
+                    todo.style.display = 'flex';
+                }else{
+                    todo.style.display = 'none';
+                }
+                break;
+            case 'doing':
+                if(todo.classList.contains('completed')){
+                    todo.style.display = 'none';
+                }else{
+                    todo.style.display = 'flex';
+                }
+        }
+    })
+}
+
 
 
 function save (todo){
