@@ -4,6 +4,8 @@ const checkLilst = document.querySelector('.todo-list')
 
 
 todoBtm.addEventListener('click',addList);
+checkLilst.addEventListener('click',deleteComplete);
+
 
 function addList(e){
     e.preventDefault();
@@ -30,6 +32,20 @@ function addList(e){
 
     checkLilst.appendChild(list)
 }
+function deleteComplete(e){
+    const item = e.target;
+    if (item.classList[0]==='trash-btn'){
+        const todo = item.parentElement;
+        todo.remove();
+    }
+    if (item.classList[0]==='complete-btn'){
+        const todo = item.parentElement;
+        todo.classList.toggle('completed')
+    }
+
+}
+
+
 function save (todo){
     let todos;
     if (localStorage.getItem('todos')===null){
