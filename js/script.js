@@ -36,6 +36,7 @@ function deleteComplete(e){
     const item = e.target;
     if (item.classList[0]==='trash-btn'){
         const todo = item.parentElement;
+        removeStorage(todo)
         todo.remove();
     }
     if (item.classList[0]==='complete-btn'){
@@ -56,3 +57,15 @@ function save (todo){
     todos.push(todo);
     localStorage.setItem(todos, JSON.stringify(todos))
 }
+function removeStorage(todo){
+    let todos;
+    if (localStorage.getItem('todos')===null){
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem("todos"));
+    }
+    const todoIndex = todo.children[0].innerText;
+    todos.splice(todos.indexOf(todoIndex),1);
+    localStorage.setItem(todos, JSON.stringify(todos))
+}
+
